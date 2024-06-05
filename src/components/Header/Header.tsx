@@ -1,7 +1,24 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import fetchData from "../../utils/fetch";
 
-const Header = () => {
+const Header = (): JSX.Element => {
+  const [todayImage, setTodayImage] = useState(null);
+
+  useEffect(() => {
+    const loadTodayImage = async () => {
+      try {
+        const todayImageResponse = await fetchData();
+        setTodayImage(todayImageResponse);
+      } catch (error) {
+        console.error("Error loading today's image", error);
+        setTodayImage(null);
+      }
+    };
+
+    loadTodayImage().catch(null);
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
