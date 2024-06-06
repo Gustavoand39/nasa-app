@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { format, sub } from "date-fns";
 
 import Header from "../../components/Header";
+import LastFiveDaysImages from "../../components/LastFiveDaysImages";
 import TodayImage from "../../components/TodayImage";
 import fetchData from "../../utils/fetch";
 import { PostImageResponse } from "../../types";
@@ -49,7 +50,11 @@ const Home = () => {
     <View style={styles.container}>
       <Header />
 
-      <TodayImage {...todayImage} />
+      <ScrollView>
+        <TodayImage {...todayImage} />
+
+        <LastFiveDaysImages postImages={lastFiveDaysImages} />
+      </ScrollView>
     </View>
   );
 };
