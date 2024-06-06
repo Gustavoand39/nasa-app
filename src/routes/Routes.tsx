@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../views/Home";
 import Details from "../views/Details";
 import { RootStackParams } from "../types";
+import { Image, StyleSheet } from "react-native";
 
 const Stack = createStackNavigator<RootStackParams>();
 
@@ -12,9 +13,13 @@ const RouteScreenDefaultOptions = {
   headerStyle: {
     backgroundColor: "rgba(7, 26, 93, 255)",
   },
-  headerTitleStyle: {
-    color: "#fff",
+  headerTintColor: "#fff",
+  headerBackTitleStyle: {
+    fontSize: 18,
   },
+  headerRight: () => (
+    <Image source={require("../assets/nasa-logo.png")} style={styles.image} />
+  ),
 };
 
 const Routes = () => (
@@ -35,3 +40,10 @@ const Routes = () => (
 );
 
 export default Routes;
+
+const styles = StyleSheet.create({
+  image: {
+    width: 50,
+    height: 50,
+  },
+});

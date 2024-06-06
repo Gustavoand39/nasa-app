@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { format, sub } from "date-fns";
 
-import Header from "../../components/Header";
 import LastFiveDaysImages from "../../components/LastFiveDaysImages";
 import TodayImage from "../../components/TodayImage";
 import fetchData from "../../utils/fetch";
@@ -49,8 +48,6 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      <Header />
-
       <ScrollView>
         <TodayImage {...todayImage} />
 
