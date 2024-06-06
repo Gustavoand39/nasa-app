@@ -4,6 +4,7 @@ import { useRoute } from "@react-navigation/native";
 import { NativeStackScreenProps } from "react-native-screens/lib/typescript/native-stack/types";
 
 import { RootStackParams } from "../../types";
+import isImage from "../../utils/isImage";
 
 const Details = () => {
   const {
@@ -13,7 +14,14 @@ const Details = () => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Image source={{ uri: url }} style={styles.image} />
+        <Image
+          source={{
+            uri: isImage(url)
+              ? url
+              : "https://th.bing.com/th/id/OIP.szckS5xAN20d1IIonPyf-gHaHa?rs=1&pid=ImgDetMain",
+          }}
+          style={styles.image}
+        />
 
         <ScrollView style={styles.scrollContent}>
           <Text style={styles.title}>{title}</Text>

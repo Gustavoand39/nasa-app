@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 import { PostImageResponse, RootStackParams } from "../../types";
+import isImage from "../../utils/isImage";
 
 type PostImageNavigationProps = StackNavigationProp<RootStackParams, "Details">;
 
@@ -14,9 +15,6 @@ const PostImage: FC<PostImageResponse> = ({
   explanation,
 }): JSX.Element => {
   const { navigate } = useNavigation<PostImageNavigationProps>();
-
-  const isImage = (url?: string): boolean =>
-    /\.(jpeg|jpg|gif|png)$/.test(url || "");
 
   const handleCardPress = () => {
     navigate("Details", { title, date, url, explanation });
