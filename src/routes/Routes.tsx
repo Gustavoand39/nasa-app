@@ -8,11 +8,28 @@ import { RootStackParams } from "../types";
 
 const Stack = createStackNavigator<RootStackParams>();
 
+const RouteScreenDefaultOptions = {
+  headerStyle: {
+    backgroundColor: "rgba(7, 26, 93, 255)",
+  },
+  headerTitleStyle: {
+    color: "#fff",
+  },
+};
+
 const Routes = () => (
   <NavigationContainer>
     <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Details" component={Details} />
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={RouteScreenDefaultOptions}
+      />
+      <Stack.Screen
+        name="Details"
+        component={Details}
+        options={RouteScreenDefaultOptions}
+      />
     </Stack.Navigator>
   </NavigationContainer>
 );
