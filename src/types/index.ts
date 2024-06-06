@@ -7,3 +7,8 @@ export type PostImageResponse = {
   title?: string;
   url?: string;
 };
+
+export type RootStackParams = {
+  Home: undefined;
+  Details: undefined;
+};

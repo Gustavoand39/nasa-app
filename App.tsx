@@ -1,6 +1,8 @@
+import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, Platform, View } from "react-native";
-import Home from "./src/views/Home";
+
+import Routes from "./src/routes/Routes";
 
 const App = (): JSX.Element => {
   return (
@@ -12,7 +14,7 @@ const App = (): JSX.Element => {
             : styles.otherPlatforms
         }
       >
-        <Home />
+        <Routes />
         <StatusBar style="light" />
       </View>
     </SafeAreaView>
