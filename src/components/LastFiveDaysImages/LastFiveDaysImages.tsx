@@ -20,6 +20,7 @@ const LastFiveDaysImages: FC<LastFiveDaysImages> = ({ postImages }) => {
             title={postImage.title}
             date={postImage.date}
             url={postImage.url}
+            explanation={postImage.explanation}
           />
         ))}
       </View>

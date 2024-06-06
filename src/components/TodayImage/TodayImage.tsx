@@ -1,13 +1,24 @@
 import React, { FC } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
-import { PostImageResponse } from "../../types";
+import { PostImageResponse, RootStackParams } from "../../types";
+
+type PostImageNavigationProps = StackNavigationProp<RootStackParams, "Details">;
 
 const TodayImage: FC<PostImageResponse> = ({
   date,
   title,
   url,
+  explanation,
 }): JSX.Element => {
+  const { navigate } = useNavigation<PostImageNavigationProps>();
+
+  const handleMorePress = () => {
+    navigate("Details", { title, date, url, explanation });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -18,7 +29,7 @@ const TodayImage: FC<PostImageResponse> = ({
       <Text style={styles.date}>{date}</Text>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleMorePress}>
           <Text style={styles.buttonText}>Learn More</Text>
         </TouchableOpacity>
       </View>

@@ -1,19 +1,33 @@
 import React, { FC } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
-import { PostImageResponse } from "../../types";
+import { PostImageResponse, RootStackParams } from "../../types";
+
+type PostImageNavigationProps = StackNavigationProp<RootStackParams, "Details">;
 
 const PostImage: FC<PostImageResponse> = ({
   title,
   date,
   url,
+  explanation,
 }): JSX.Element => {
+  const { navigate } = useNavigation<PostImageNavigationProps>();
+
   const isImage = (url?: string): boolean =>
     /\.(jpeg|jpg|gif|png)$/.test(url || "");
 
+  const handleCardPress = () => {
+    navigate("Details", { title, date, url, explanation });
+  };
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.touchableContainer}>
+      <TouchableOpacity
+        style={styles.touchableContainer}
+        onPress={handleCardPress}
+      >
         <View style={styles.imageContainer}>
           <Image
             source={{
