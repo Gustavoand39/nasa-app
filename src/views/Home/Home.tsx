@@ -35,6 +35,7 @@ const Home = () => {
           `&start_date=${fiveDaysAgoDate}&end_date=${todayDate}`
         );
 
+        lastFiveDaysImagesResponse.reverse();
         setLastFiveDaysImages(lastFiveDaysImagesResponse);
       } catch (error) {
         console.error("Error loading last five images", error);
